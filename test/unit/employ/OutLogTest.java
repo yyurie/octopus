@@ -22,7 +22,7 @@ public class OutLogTest {
 	//グローバル変数の設定
 	BufferedReader br = null;
 	StringBuffer sb = null;
-	//FORMAT_yyyy/mm/dd hh:mm:ss:
+	//FORMATはyyyy/mm/dd hh:mm:ss:
 	static final String DAY_FORMAT = "[0-9]{4}/[0-9]{2}/[0-9]{2}";
 	static final String TIME_FORMAT = " [0-9]{2}:[0-9]{2}:[0-9]{2}:";
 	static final String FILENAME ="C:/test/log/log.txt";
@@ -62,7 +62,7 @@ public class OutLogTest {
 		String str =readFile().toString();
 		String log = str.substring(20,31);
 		
-		//dayformat_check
+		//dayformatとtimeformat_check
 		boolean flag1 = checkDayTimeFormat(str);
 		assertTrue(flag1);
 		
@@ -116,6 +116,7 @@ public class OutLogTest {
 		try {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(FILENAME)));
 			sb = new StringBuffer();
+			//ファイル読み込み
 			int ch =br.read();
 			 while(ch != -1){
 				 sb.append((char)ch);
@@ -128,6 +129,7 @@ public class OutLogTest {
 		} finally{
 			br.close();
 		}
+		//StringBuffer返却
 		return sb;		
 	}
 	

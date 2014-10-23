@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.naming.NamingException;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -24,22 +23,14 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import user.parts.RegInfDAO;
 import user.bean.RegistrantInfo;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-
 public class RegInfDAOTest {
 
-	String id;
-	String name;
-	String age;
 	RegInfDAO dao;
 	ArrayList<RegistrantInfo> list = new ArrayList<RegistrantInfo>(); 
-	//static Connection con = null;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-
+		//JNDI
 	    System.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.apache.naming.java.javaURLContextFactory");
 	    System.setProperty(Context.URL_PKG_PREFIXES, "org.apache.naming");
 
@@ -59,14 +50,12 @@ public class RegInfDAOTest {
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+		//処理なし
 	}
 
 	@Before
 	public void setUp() throws Exception {
 		//変数の初期化
-		name = "";
-		age = "";
-		id = "";
 		list.clear();
 	}
 
@@ -84,9 +73,9 @@ public class RegInfDAOTest {
 		
 		System.out.println("UT002-001_id:004、name:佐藤路未央、age:16のInsertテスト(正常系)");
 		dao = new RegInfDAO();
-		id = "004";
-		name = "佐藤路未央";
-		age = "28"; 
+		String id = "004";
+		String name = "佐藤路未央";
+		String age = "28"; 
 		dao.insert(id, name, age);
 		
 		//期待値
@@ -104,9 +93,9 @@ public class RegInfDAOTest {
 	public void testUpdate() {
 		System.out.println("UT002-002_id:002をname:Michael、age:29に更新するUpdateテスト(正常系)");
 		dao = new RegInfDAO();
-		id = "002";
-		name = "Michael";
-		age = "29"; 
+		String id = "002";
+		String name = "Michael";
+		String age = "29"; 
 		dao.update(id, name, age);
 		
 		//期待値
@@ -122,7 +111,7 @@ public class RegInfDAOTest {
 	public void testDelete() {
 		System.out.println("UT002-003_id:001を削除するDeleteテスト(正常系)");
 		dao = new RegInfDAO();
-		id = "001";
+		String id = "001";
 		dao.delete(id);
 		
 		//期待値
