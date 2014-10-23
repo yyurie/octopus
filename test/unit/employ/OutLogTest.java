@@ -39,6 +39,8 @@ public class OutLogTest {
 
 	@Before
 	public void setUp() throws Exception {
+		//logファイルの中身を空にする
+		WriteFile();
 		//変数の初期化
 		br = null;
 		sb = null;
@@ -46,8 +48,7 @@ public class OutLogTest {
 
 	@After
 	public void tearDown() throws Exception {
-		//logファイルの中身を空にする
-		WriteFile();
+		//処理なし
 	}
 
 	/**

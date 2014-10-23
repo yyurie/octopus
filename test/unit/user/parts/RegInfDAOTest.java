@@ -55,15 +55,15 @@ public class RegInfDAOTest {
 
 	@Before
 	public void setUp() throws Exception {
+		//DBの前提条件の設定
+		connectDB("DELETE FROM registrants");
+		connectDB("INSERT INTO registrants (registrant_id,registrant_name,registrant_age) VALUES('001','鈴木太郎','35'),('002','Tommy','25'),('003','山田花子','30')");
 		//変数の初期化
 		list.clear();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		//DBの後片付け
-		connectDB("DELETE FROM registrants");
-		connectDB("INSERT INTO registrants (registrant_id,registrant_name,registrant_age) VALUES('001','鈴木太郎','35'),('002','Tommy','25'),('003','山田花子','30')");
 		dao.close();
 	}
 
